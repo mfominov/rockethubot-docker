@@ -1,0 +1,36 @@
+version: '2'
+services:
+  hubot:
+    image: mfominov/rockethubot-docker
+    environment:
+      - NPM_REGISTRY=
+      - REDIS_URL=redis://redis:6379/refix
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - ROCKETCHAT_ROOM=
+      - LISTEN_ON_ALL_PUBLIC=false
+      - HUBOT_LOG_LEVEL="debug"
+      - HUBOT_ALIAS=!
+      - BOT_NAME=
+      - ROCKETCHAT_USER=
+      - ROCKETCHAT_PASSWORD=
+      - ROCKETCHAT_AUTH=password
+      - ROCKETCHAT_URL=
+      - HUBOT_JENKINS_URL=
+      - HUBOT_JENKINS_AUTH=
+      - HUBOT_JIRA_URL=
+      - HUBOT_JIRA_USER=
+      - HUBOT_JIRA_USERNAME=
+      - HUBOT_JIRA_PASSWORD=Infra456
+      - EXTERNAL_SCRIPTS=hubot-diagnostics,hubot-help,hubot-redis-brain,hubot-rules
+      - HUBOT_SCRIPTS=jira.coffee,jira-issues.coffee,custom-jenkins
+    volumes:
+     - ./custom-jenkins.coffee:/home/hubot/scripts/custom-jenkins.coffee
+    depends_on:
+      - redis
+  redis:
+    image: redis:3.0.6
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+volumes:
+  redis_data:
