@@ -2,6 +2,7 @@ version: '2'
 services:
   hubot:
     image: mfominov/rockethubot-docker
+    build: .
     environment:
       - NPM_REGISTRY=
       - REDIS_URL=redis://redis:6379/refix
@@ -20,7 +21,7 @@ services:
       - HUBOT_JIRA_URL=
       - HUBOT_JIRA_USER=
       - HUBOT_JIRA_USERNAME=
-      - HUBOT_JIRA_PASSWORD=Infra456
+      - HUBOT_JIRA_PASSWORD=
       - EXTERNAL_SCRIPTS=hubot-diagnostics,hubot-help,hubot-redis-brain,hubot-rules
       - HUBOT_SCRIPTS=jira.coffee,jira-issues.coffee,custom-jenkins
     volumes:

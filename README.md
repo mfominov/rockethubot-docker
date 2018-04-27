@@ -1,1 +1,1 @@
-# rockethubt-docker
+# rockethubot-docker

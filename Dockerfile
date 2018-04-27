@@ -7,6 +7,7 @@ ENV HUBOT_HOME /home/hubot
 ENV NPM_REGISTRY https://registry.npmjs.org/
 ENV BOT_NAME rocketbot
 ENV BOT_OWNER rocketbot own it self
+ENV HUBOT_VERSION 1.0.12
 
 RUN groupadd -r hubot -g 1001 && \
         useradd -u 1001 -r -g hubot -m -d $HUBOT_HOME -s /sbin/nologin -c "Hubot user" hubot && \
@@ -14,7 +15,7 @@ RUN groupadd -r hubot -g 1001 && \
 
 RUN npm set registry $NPM_REGISTRY
 
-RUN npm install -g yo generator-hubot hubot-rocketchat@1.0.8
+RUN npm install -g yo generator-hubot hubot-rocketchat@$HUBOT_VERSION
 
 USER $HUBOT_USER
 
