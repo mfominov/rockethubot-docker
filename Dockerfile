@@ -1,4 +1,4 @@
-FROM node:6.11
+FROM node:8.12-alpine
 
 LABEL maintainer="MAFominov" emain="maxfominov@gmail.com"
 
@@ -7,7 +7,7 @@ ENV HUBOT_HOME /home/hubot
 ENV NPM_REGISTRY https://registry.npmjs.org/
 ENV BOT_NAME rocketbot
 ENV BOT_OWNER rocketbot own it self
-ENV HUBOT_VERSION 1.0.12
+ENV HUBOT_VERSION 2.0.0
 
 RUN groupadd -r hubot -g 1001 && \
         useradd -u 1001 -r -g hubot -m -d $HUBOT_HOME -s /sbin/nologin -c "Hubot user" hubot && \
